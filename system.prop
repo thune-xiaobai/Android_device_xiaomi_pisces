@@ -1,0 +1,91 @@
+#
+# from device/xiaomi/pisces/system.prop
+#
+ro.opengles.version = 131072
+wifi.interface=wlan0
+ap.interface=wlan0
+persist.tegra.nvmmlite = 1
+persist.wlan.ti.calibrated = 0
+ro.ril.wake_lock_timeout=200000
+ro.sf.override_null_lcd_density = 0
+ro.sf.lcd_density = 480
+
+#NFC
+debug.nfc.fw_download=false
+debug.nfc.se=false
+
+#support dynamic resolution change property
+ro.streaming.video.drs=true
+
+# use glcomposer as the default compositor
+persist.tegra.compositor=glcomposer
+
+# disable strictmode
+persist.sys.strictmode.disable=true
+
+# keyguard
+keyguard.no_require_sim=true
+#
+# Haptic
+#
+ro.haptic.vibrate_ex.enabled=1
+sys.haptic.long.weak=0,127,10,50,20,-50,10,0,10
+sys.haptic.long.normal=0,127,10,80,20,-80,10,0,10
+sys.haptic.long.strong=0,127,10,100,20,-100,10,0,10
+sys.haptic.down.weak=0,120,10,-50,10,0,10
+sys.haptic.down.normal=0,127,10,-80,10,0,10
+sys.haptic.down.strong=0,127,20,-80,10,0,10
+sys.haptic.up.weak=0,80,30,-50,10,0,10
+sys.haptic.up.normal=0,100,30,-100,10,0,10
+sys.haptic.up.strong=0,120,30,-120,10,0,10
+sys.haptic.tap.weak=0,80,40,-5,5,0,10
+sys.haptic.tap.normal=0,100,40,-5,5,0,10
+sys.haptic.tap.strong=0,120,40,-5,5,0,10
+
+# ussrd
+ussrd.enabled=0
+
+# wait time before close audio stream
+ro.audio.flinger_standbytime_ms=100
+
+# System prop to select audio resampler quality
+af.resampler.quality=3
+
+# button jack mode and switch
+persist.sys.button_jack_profile=volume
+persist.sys.button_jack_switch=0
+
+# media button for headset hook
+persist.sys.button_headset_hook=media
+
+# enable auto-brightness adjustment
+persist.power.useautobrightadj=true
+
+# app profiling
+persist.sys.NV_OEM_PROFILE_NAME=/system/etc/profile.bin
+
+#add mediascanner skip list
+testing.mediascanner.skiplist=/storage/sdcard0/Android/
+
+#enable Miracast game mode support
+nvwfd.gamemode = 1
+
+#max resolution supported for Miracast is 720p, represented interms of macroblocks
+nvwfd.maxresolution_macroblocks = 3600
+
+# thermal point path used by power HAL
+ro.nvtherm.cpu.throttle.path=/sys/devices/virtual/thermal/thermal_zone0/trip_point_0_temp
+ro.nvtherm.cpu.shutdown.path=/sys/devices/virtual/thermal/thermal_zone0/trip_point_2_temp
+ro.nvtherm.gpu.throttle.path=/sys/devices/virtual/thermal/thermal_zone1/trip_point_0_temp
+ro.nvtherm.gpu.shutdown.path=/sys/devices/virtual/thermal/thermal_zone1/trip_point_2_temp
+ro.nvtherm.tskin.throttle.path=/sys/devices/virtual/thermal/thermal_zone5/trip_point_0_temp
+
+# default power mode
+persist.sys.aries.power_profile=middle
+persist.sys.NV_POWER_MODE=1
+
+# use MI3 app profiles
+persist.sys.NV_PROFILE_MODEL=MI3
+# don't preload OpenGL in Zygote, the Tegra drivers do not like it
+ro.zygote.disable_gl_preload=true
+
