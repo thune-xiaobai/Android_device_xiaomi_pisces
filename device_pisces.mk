@@ -37,6 +37,8 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/pisces/ramdisk/init.modem_imc.rc:root/init.modem_imc.rc \
     device/xiaomi/pisces/ramdisk/init.nv_dev_board.usb.rc:root/init.nv_dev_board.usb.rc \
     device/xiaomi/pisces/ramdisk/init.pisces.rc:root/init.pisces.rc \
+    device/xiaomi/pisces/ramdisk/init.hdcp.rc:root/init.hdcp.rc \
+    device/xiaomi/pisces/ramdisk/init.nv_dev_board.usb.rc:root/init.pisces.usb.rc \
     device/xiaomi/pisces/ramdisk/fstab.pisces:root/fstab.pisces
 
 #gps
@@ -48,6 +50,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -63,8 +71,45 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
+
+PRODUCT_COPY_FILES += \
+    device/xiaomi/pisces/permissions/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml \
+    device/xiaomi/pisces/permissions/com.android.media.remotedisplay.xml:system/etc/permissions/com.android.media.remotedisplay.xml \
+    device/xiaomi/pisces/permissions/com.broadcom.bt.xml:system/etc/permissions/com.broadcom.bt.xml \
+    device/xiaomi/pisces/permissions/com.broadcom.nfc.xml:system/etc/permissions/com.broadcom.nfc.xml \
+    device/xiaomi/pisces/permissions/com.nvidia.graphics.xml:system/etc/permissions/com.nvidia.graphics.xml \
+    device/xiaomi/pisces/permissions/com.nvidia.miracast.xml:system/etc/permissions/com.nvidia.miracast.xml \
+    device/xiaomi/pisces/permissions/com.nvidia.nvsi.xml:system/etc/permissions/com.nvidia.nvsi.xml \
+    device/xiaomi/pisces/permissions/com.nvidia.nvstereoutils.xml:system/etc/permissions/com.nvidia.nvstereoutils.xml \
+    device/xiaomi/pisces/permissions/com.vzw.nfc.xml:system/etc/permissions/com.vzw.nfc.xml \
+    device/xiaomi/pisces/permissions/org.simalliance.openmobileapi.xml:system/etc/permissions/org.simalliance.openmobileapi.xml \
+    device/xiaomi/pisces/permissions/platform.xml:system/etc/permissions/platform.xml
+
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/system,system)
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+        ro.secure=0 \
+        ro.allow.mock.location=1 \
+        persist.sys.usb.config=mtp \
+        ro.adb.secure=0 \
+        ro.debuggable=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.override_null_lcd_density = 1 \
+    persist.tegra.compositor=glcomposer \
+    debug.hwui.render_dirty_regions=false \
+    persist.tegra.nvmmlite = 1 \
+    drm.service.enabled=true 
+
+# Audio
+PRODUCT_PACKAGES += \
+        audio.a2dp.default \
+        audio.usb.default \
+        audio.r_submix.default \
+        libaudioutils
+
+
 
 
 # NFC packages

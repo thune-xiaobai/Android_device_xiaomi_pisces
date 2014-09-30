@@ -22,3 +22,5 @@
 
 add_lunch_combo cm_pisces-userdebug
 add_lunch_combo cm_pisces-eng
+#sh device/xiaomi/pisces/patch/applypatch.sh
+

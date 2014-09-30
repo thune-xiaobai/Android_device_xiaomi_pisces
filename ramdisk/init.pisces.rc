@@ -41,33 +41,35 @@ on init
     # Immersion
     export VIBE_PIPE_PATH /dev/pipes
     mkdir /dev/pipes 0771 system system
+
 on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     setprop ro.crypto.umount_sd false
     setprop ro.crypto.fuse_sdcard true
-    mount ext4 /dev/block/platform/sdhci-tegra.3/by-name/system /system wait ro barrier=1
+    #mount ext4 /dev/block/platform/sdhci-tegra.3/by-name/system /system wait ro barrier=1
 
-    wait /dev/block/platform/sdhci-tegra.3/by-name/userdata
-    exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/userdata /data
+    #wait /dev/block/platform/sdhci-tegra.3/by-name/userdata
+    #exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/userdata /data
 
-    wait /dev/block/platform/sdhci-tegra.3/by-name/cache
-    exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/cache /cache
+    #wait /dev/block/platform/sdhci-tegra.3/by-name/cache
+    #exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/cache /cache
 
-    wait /dev/block/platform/sdhci-tegra.3/by-name/persist
-    exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/persist /persist
-    chown system system /persist
-    chmod 0771 /persist
+    #wait /dev/block/platform/sdhci-tegra.3/by-name/persist
+    #exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/persist /persist
+    #chown system system /persist
+    #chmod 0771 /persist
 
-    exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/storage /storage_int
-    chmod 0775 /storage_int
-    chown media_rw media_rw /storage_int
+    #exec /system/bin/sh /system/bin/mount_ext4.sh /dev/block/platform/sdhci-tegra.3/by-name/storage /storage_int
+    #chmod 0775 /storage_int
+    #chown media_rw media_rw /storage_int
 
-    mkdir /mnt/modem/data 0770 root radio
-    mkdir /mnt/modem/data/factory 0770 root radio
-    exec /system/bin/conn_init -o
+    #mkdir /mnt/modem/data 0770 root radio
+    #mkdir /mnt/modem/data/factory 0770 root radio
+    #exec /system/bin/conn_init -o
 
-    chown system system /persist/serialno
-    chmod 0400 /persist/serialno
+    #chown system system /persist/serialno
+    #chmod 0400 /persist/serialno
+    mount_all /fstab.pisces
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -110,6 +112,21 @@ on early-boot
 
 on boot
 
+
+#Add from init.rc 
+    # atomic allocations can get upto 5/8th of this size
+    write /proc/sys/vm/min_free_kbytes 16384
+
+    chown system system /sys/class/leds/flashlight/brightness
+    chmod 0664 /sys/class/leds/flashlight/brightness
+
+    chown system system /sys/class/timed_output/vibrator/pattern
+
+    #----AKM8963 sysfs entry----
+    chown system system /sys/class/compass/akm8963/enable_mag
+    chown system system /sys/class/compass/akm8963/delay_mag
+#Add end
+
 # bluetooth
     exec /system/bin/conn_init -p
     # change back to bluetooth from system
@@ -129,6 +146,7 @@ on boot
     # bluetooth MAC address programming
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
     chown bluetooth net_bt_stack /system/etc/bluetooth
+
     chown bluetooth net_bt_stack /data/misc/bluetooth
     setprop ro.bt.bdaddr_path "/data/misc/bluetooth/bdaddr"
 
@@ -551,6 +569,12 @@ service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
 
 service charger /sbin/chargeonlymode
     class charger
+
+
+service akmd /system/bin/akmd8963
+    class core
+    user system
+    group system misc input
 
 service sysmatsir /system/bin/smonsir
     user root

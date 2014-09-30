@@ -54,3 +54,54 @@
 /dev/min_online_cpus	0660	system	system
 /dev/max_online_cpus	0660	system	system
 /dev/tspdrv     0660    system  system
+
+#add from ueventd.rc
+/dev/akm8963_dev          0660   system     system
+/dev/iio:device*          0660   system     system
+/dev/ttySC0               0666   radio      radio
+
+/sys/devices/virtual/input/input*   null_value  0660  root   input
+/sys/devices/virtual/input/input*   dump_period 0660  root   input
+
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/trigger*     name                              0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  accl_bias                         0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  accl_enable                       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  accl_matrix                       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  buffer/length                     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  buffer/enable                     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  compass_enable                    0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  compass_matrix                    0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  dmp_event_int_on                  0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  dmp_firmware                      0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  dmp_int_on                        0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  dmp_on                            0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  dmp_output_rate                   0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  event_display_orientation         0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  firmware_loaded                   0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  gyro_enable                       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  gyro_matrix                       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  in_accel_scale                    0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  in_anglvel_scale                  0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  in_magn_scale                     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  key                               0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  power_state                       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  quaternion_on                     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  sampling_frequency                0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_accel_x_en       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_accel_y_en       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_accel_z_en       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_anglvel_x_en     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_anglvel_y_en     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_anglvel_z_en     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_magn_x_en        0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_magn_y_en        0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_magn_z_en        0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_quaternion_r_en  0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_quaternion_x_en  0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_quaternion_y_en  0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_quaternion_z_en  0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  scan_elements/in_timestamp_en     0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  self_test                         0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  tap_on                            0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  temperature                       0660  system system
+/sys/devices/platform/tegra11-i2c.0/i2c-0/0-0068/iio:device*  trigger/current_trigger   
