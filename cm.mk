@@ -19,9 +19,9 @@ $(call inherit-product, device/xiaomi/pisces/device_pisces.mk)
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := pisces
 PRODUCT_NAME := cm_pisces
-PRODUCT_BRAND := xiaomi
+PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := pisces
-PRODUCT_MANUFACTURER := xiaomi
+PRODUCT_MANUFACTURER := Xiaomi
 
 # Enable Torch
 PRODUCT_PACKAGES += Torch

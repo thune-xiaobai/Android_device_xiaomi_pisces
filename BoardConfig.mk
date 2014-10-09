@@ -1,5 +1,3 @@
-USE_CAMERA_STUB := true
-
 # inherit from the proprietary version
 -include vendor/xiaomi/pisces/BoardConfigVendor.mk
 
@@ -21,6 +19,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a15
 TARGET_ARCH_VARIANT_CPU := cortex-a15
 TARGET_CPU_SMP := true
+
 
 TARGET_USE_TEGRA_BIONIC_OPTIMIZATION := true
 TARGET_USE_TEGRA11_MEMCPY_OPTIMIZATION := true
@@ -49,7 +48,7 @@ TARGET_PREBUILT_KERNEL := device/xiaomi/pisces/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/pisces/include
+#TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/pisces/include
 
 #WIFI
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -58,11 +57,11 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE := bcmdhd
-
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/bcm43341/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/bcm43341/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/vendor/firmware/bcm43341/fw_bcmdhd_p2p.bin"
+WIFI_DRIVER_MODULE_DEVICE   := bcmdhd
 
 #Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -70,23 +69,27 @@ TARGET_PROVIDES_LIBLIGHT := true
 #egl
 BOARD_EGL_CFG := device/xiaomi/pisces/egl.cfg
 USE_OPENGL_RENDERER := true
-#NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-#BOARD_USE_SKIA_LCDTEXT := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+BOARD_USE_SKIA_LCDTEXT := true
 
 #rild
 #TARGET_PROVIDES_LIBRIL := vendor/xiaomi/pisces/proprietary/lib/libril-xiaomi-sprd.so
 #BOARD_RIL_NO_CELLINFOLIST := true
 
 ##audio
-BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
-BOARD_SUPPORT_NVOICE := true
-BOARD_USES_TFA := true
+#$BOARD_SUPPORT_NVAUDIOFX := true
+#BOARD_SUPPORT_NVOICE := true
+#BOARD_USES_TFA := true
+# This variable is set first, so it can be overridden
+# by BoardConfigVendor.mk
+USE_CAMERA_STUB := false
+BOARD_USES_GENERIC_AUDIO := false
 
-
-USE_E2FSPROGS := true
-BOARD_HAS_NVDPS := true
-NVCMS_CMU_USE_CONFIG := true
+#USE_E2FSPROGS := true
+#BOARD_HAS_NVDPS := true
+#NVCMS_CMU_USE_CONFIG := true
 
 TARGET_RECOVERY_FSTAB := device/xiaomi/pisces/ramdisk/fstab.pisces
 
@@ -96,6 +99,8 @@ BOARD_HAVE_GPS_BCM := true
 #recovery
 RECOVERY_FSTAB_VERSION := 2
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
+
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD -DNEEDS_VECTORIMPL_SYMBOLS
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \

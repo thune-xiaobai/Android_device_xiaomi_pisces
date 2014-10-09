@@ -1,3 +1,4 @@
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
@@ -43,7 +44,27 @@ PRODUCT_COPY_FILES += \
 
 #gps
 PRODUCT_COPY_FILES += \
-    device/xiaomi/pisces/gps.conf:system/etc/gps.conf
+    device/xiaomi/pisces/gps/gps.conf:system/etc/gps.conf \
+    device/xiaomi/pisces/gps/gpsconfigftm.xml:system/etc/gpsconfigftm.xml \
+    device/xiaomi/pisces/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml
+
+#audio
+PRODUCT_COPY_FILES += \
+    device/xiaomi/pisces/audio/asound.conf:system/etc/asound.conf \
+    device/xiaomi/pisces/audio/audio_effects.conf:system/etc/audio_effects.conf \
+    device/xiaomi/pisces/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/xiaomi/pisces/audio/nvaudio_conf.xml:system/etc/nvaudio_conf.xml
+
+#camera
+PRODUCT_COPY_FILES += \
+    device/xiaomi/pisces/camera/model_frontal.xml:system/etc/model_frontal.xml \
+    device/xiaomi/pisces/camera/nvcamera.conf:system/etc/nvcamera.conf
+
+#media
+PRODUCT_COPY_FILES += \
+    device/xiaomi/pisces/media/media_profiles.xml:system/etc/media_profiles.xml \
+    device/xiaomi/pisces/media/media_codecs.xml:system/etc/media_codecs.xml \
+    device/xiaomi/pisces/media/enctune.conf:system/etc/enctune.conf
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -110,7 +131,11 @@ PRODUCT_PACKAGES += \
         libaudioutils
 
 
-
+# Misc
+PRODUCT_PACKAGES += \
+    librs_jni \
+    com.android.future.usb.accessory \
+    libnetcmdiface 
 
 # NFC packages
 PRODUCT_PACKAGES += \

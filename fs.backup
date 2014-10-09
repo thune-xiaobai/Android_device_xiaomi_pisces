@@ -1,0 +1,27 @@
+# mount point	fstype		device
+
+#/recovery       emmc            /dev/block/platform/sdhci-tegra.3/by-name/recovery
+#/boot           emmc            /dev/block/platform/sdhci-tegra.3/by-name/boot
+#/boot1          emmc            /dev/block/platform/sdhci-tegra.3/by-name/boot1
+#/system         ext4            /dev/block/platform/sdhci-tegra.3/by-name/system
+#/system1        ext4            /dev/block/platform/sdhci-tegra.3/by-name/system1
+#/cache          ext4            /dev/block/platform/sdhci-tegra.3/by-name/cache
+#/misc           emmc            /dev/block/platform/sdhci-tegra.3/by-name/misc
+#/staging        emmc            /dev/block/platform/sdhci-tegra.3/by-name/staging
+#/modem          ext4            /dev/block/platform/sdhci-tegra.3/by-name/MDM
+#/metadata       emmc            /dev/block/platform/sdhci-tegra.3/by-name/MDA
+#/data           ext4            /dev/block/platform/sdhci-tegra.3/by-name/userdata
+#/sdcard         ext4            /dev/block/platform/sdhci-tegra.3/by-name/storage
+
+/dev/block/platform/sdhci-tegra.3/by-name/recovery     /recovery            emmc     defaults     defaults
+/dev/block/platform/sdhci-tegra.3/by-name/boot    /boot                emmc     defaults     defaults
+/dev/block/platform/sdhci-tegra.3/by-name/boot1    /boot1                emmc     defaults     defaults
+/dev/block/platform/sdhci-tegra.3/by-name/system     /system              ext4     ro     wait
+/dev/block/platform/sdhci-tegra.3/by-name/system1     /system1              ext4     ro     wait
+/dev/block/platform/sdhci-tegra.3/by-name/cache     /cache               ext4     noatime,nosuid,nodev,barrier=1,data=ordered,discard,errors=panic     wait,check
+/dev/block/platform/sdhci-tegra.3/by-name/userdata     /data                ext4     noatime,nosuid,nodev,barrier=1,data=ordered,discard,noauto_da_alloc,errors=panic     wait,check,encryptable=/dev/block/platform/sdhci-tegra.3/by-name/MDA
+/dev/block/platform/sdhci-tegra.3/by-name/MDA     /metadata            emmc     defaults     defaults
+/dev/block/platform/sdhci-tegra.3/by-name/misc     /misc                emmc     defaults     defaults
+/dev/block/platform/sdhci-tegra.3/by-name/staging     /staging             emmc     defaults     defaults
+#sdcard
+/dev/block/platform/sdhci-tegra.3/by-name/storage	auto	auto	defaults	voldmanaged=sdcard1:auto
