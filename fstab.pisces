@@ -24,4 +24,4 @@
 /dev/block/platform/sdhci-tegra.3/by-name/misc     /misc                emmc     defaults     defaults
 /dev/block/platform/sdhci-tegra.3/by-name/staging     /staging             emmc     defaults     defaults
 #sdcard
-/dev/block/platform/sdhci-tegra.3/by-name/storage	auto	auto	defaults	voldmanaged=sdcard1:auto
+/dev/block/platform/sdhci-tegra.3/by-name/storage	/sdcard      ext4     noatime,nosuid,nodev,barrier=1,data=ordered,discard,errors=panic wait,check

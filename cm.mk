@@ -20,7 +20,7 @@ $(call inherit-product, device/xiaomi/pisces/device_pisces.mk)
 PRODUCT_DEVICE := pisces
 PRODUCT_NAME := cm_pisces
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := pisces
+PRODUCT_MODEL := MI 3
 PRODUCT_MANUFACTURER := Xiaomi
 
 # Enable Torch

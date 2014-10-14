@@ -55,6 +55,9 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/pisces/audio/audio_policy.conf:system/etc/audio_policy.conf \
     device/xiaomi/pisces/audio/nvaudio_conf.xml:system/etc/nvaudio_conf.xml
 
+PRODUCT_COPY_FILES_OVERRIDES := \
+    system/etc/audio_effects.conf
+
 #camera
 PRODUCT_COPY_FILES += \
     device/xiaomi/pisces/camera/model_frontal.xml:system/etc/model_frontal.xml \
@@ -130,12 +133,14 @@ PRODUCT_PACKAGES += \
         audio.r_submix.default \
         libaudioutils
 
-
 # Misc
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory \
-    libnetcmdiface 
+    libnetcmdiface  \
+    tinycap \
+    tinymix \
+    tinyplay
 
 # NFC packages
 PRODUCT_PACKAGES += \
