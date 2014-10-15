@@ -48,7 +48,7 @@ TARGET_PREBUILT_KERNEL := device/xiaomi/pisces/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-#TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/pisces/include
+TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/pisces/include
 
 #WIFI
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -95,6 +95,9 @@ TARGET_RECOVERY_FSTAB := device/xiaomi/pisces/fstab.pisces
 
 # GPS
 BOARD_HAVE_GPS_BCM := true
+
+#Vibrator
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/xiaomi/pisces/tspdrv.c
 
 #recovery
 RECOVERY_FSTAB_VERSION := 2
